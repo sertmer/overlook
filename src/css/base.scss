@@ -85,9 +85,9 @@ input {
 .log-in-submit-button {
   @include rounded-corners(7%);
   width: 40%;
-  height: 10%;
+  height: 40px;
   background-color: $primary-accent;
-  margin: 5% 1% 1% 0;
+  margin: 1% 1% 1% 1%;
   padding: 5%;
   color: $tertiary-accent;
   font-family: $heading-font;

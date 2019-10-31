@@ -78,7 +78,6 @@ form {
 }
 
 input {
-  @include rounded-corners(7%)
   width: 90%;
   height: 40px;
 }
@@ -88,7 +87,9 @@ input {
   width: 40%;
   height: 10%;
   background-color: $primary-accent;
-  margin: 1% 1% 1% 0;
+  margin: 5% 1% 1% 0;
   padding: 5%;
-  color: $secondary-accent;
+  color: $tertiary-accent;
+  font-family: $heading-font;
+  font-size: .75em;
 }

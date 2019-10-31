@@ -44,7 +44,7 @@ h1 {
   font-size: 2em;
 }
 
-button {
+.log-in-button {
   @include rounded-corners(7%);
   display: inline-block;
   margin: 1%;
@@ -52,7 +52,7 @@ button {
   font-family: $heading-font;
   font-size: 1em;
   background-color: $secondary-accent;
-  width: 8%;
+  width: 6%;
 }
 
 div {
@@ -63,15 +63,32 @@ div {
 
 .log-in-menu {
   width: 20%;
-  display: flex;
-  justify-content: flex-end;
+  background-color: $secondary-accent;
 }
 
 form {
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 5%;
   margin: 2%;
+  font-family: $heading-font;
+  color: $primary-accent;
+  font-size: 1.5em;
 }
 
+input {
+  @include rounded-corners(7%)
+  width: 90%;
+  height: 40px;
+}
+
+.log-in-submit-button {
+  @include rounded-corners(7%);
+  width: 40%;
+  height: 10%;
+  background-color: $primary-accent;
+  margin: 1% 1% 1% 0;
+  padding: 5%;
+  color: $secondary-accent;
+}

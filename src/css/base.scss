@@ -1,6 +1,20 @@
 @import 'mixins';
 @import 'variables';
 
+.clearfix:after {
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: $primary-background;
 }
@@ -17,9 +31,17 @@ nav {
 h1 {
   color: $secondary-accent;
   display: inline-block;
+  margin: 1% 1%;
+  font-family: $heading-font;
+  font-size: 2em;
 }
 
 button {
+  @include rounded-corners(7%);
   display: inline-block;
   margin: 1%;
+  padding: 1%;
+  font-family: $body-font;
+  font-size: 1em;
+  background-color: $secondary-accent;
 }

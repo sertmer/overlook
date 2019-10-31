@@ -19,7 +19,7 @@ body {
   background-color: $primary-background;
 }
 
-header {
+main {
   display: flex;
 }
 
@@ -55,9 +55,15 @@ button {
   width: 8%;
 }
 
+div {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
 .log-in-menu {
   width: 10%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 

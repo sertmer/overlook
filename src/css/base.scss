@@ -62,8 +62,16 @@ div {
 }
 
 .log-in-menu {
-  width: 10%;
+  width: 20%;
   display: flex;
   justify-content: flex-end;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5%;
+  margin: 2%;
 }
 

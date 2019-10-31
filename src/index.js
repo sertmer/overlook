@@ -10,7 +10,7 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 $( document ).ready(function() {
-  $('#log-in-button').click (function() {
+  $('#log-in-button-js').click (function() {
     $('#log-in-menu-js').slideToggle('slow')
   })
 });

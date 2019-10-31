@@ -1,8 +1,5 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: #F1F1F1;
-$primary-accent: #263669;
-$secondary-accent: #CEE9EE;
-$call-to-action: #E4432F;
+@import 'mixins';
+@import 'variables';
 
 body {
   background-color: $primary-background;

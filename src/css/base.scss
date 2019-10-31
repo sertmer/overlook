@@ -1,6 +1,27 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: #F1F1F1;
+$primary-accent: #263669;
+$secondary-accent: #CEE9EE;
+$call-to-action: #E4432F;
 
 body {
   background-color: $primary-background;
+}
+
+nav {
+  height: 15%;
+  width: 100%;
+  background-color: $primary-accent;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+h1 {
+  color: $secondary-accent;
+  display: inline-block;
+}
+
+button {
+  display: inline-block;
 }

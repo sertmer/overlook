@@ -19,6 +19,10 @@ body {
   background-color: $primary-background;
 }
 
+header {
+  display: flex;
+}
+
 nav {
   height: 15%;
   width: 100%;
@@ -27,6 +31,10 @@ nav {
   justify-content: space-between;
   flex-direction: row;
 }
+
+// .hidden {
+//   display: none;
+// }
 
 h1 {
   color: $secondary-accent;
@@ -41,8 +49,15 @@ button {
   display: inline-block;
   margin: 1%;
   padding: 1%;
-  font-family: $body-font;
+  font-family: $heading-font;
   font-size: 1em;
   background-color: $secondary-accent;
   width: 8%;
 }
+
+.log-in-menu {
+  width: 10%;
+  display: flex;
+  justify-content: end;
+}
+

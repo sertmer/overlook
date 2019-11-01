@@ -7,7 +7,7 @@ $( document ).ready(() => {
     $('#login-menu-js').slideToggle('slow')
   });
 
-  $('#login-submit-button-js').click((e) => {
+  $('#login-submit-button-js').click(() => {
     event.preventDefault();
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
       displayManagerDashboard();
@@ -18,6 +18,40 @@ $( document ).ready(() => {
     }
   });
 
+  $('body').click(() => {
+    console.log(event.target.id)
+    if (event.target.id === 'logout-button-js') {
+      logout();
+    }
+  });
+
+  //logout works, but need to add listner to body, and have a bunch of 
+  //conditionals to account for dynamic targets
+
+  function logout() {
+    $('body').html(`
+    <header>
+      <nav>
+        <h1>The Overlook Hotel</h1>
+        <button id="login-button-js" class="login-button">Log In</button>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <section id="login-menu-js" class="login-menu" hidden>
+          <form>
+            <label for="username-input">Username</label>
+            <input type="text" id="username-input">
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input">
+            <p class="login-error" id="login-error-js" hidden>Invalid Login</p>
+            <button type="submit" class="login-submit-button" id="login-submit-button-js">Submit</button>
+          </form>
+        </section>
+      </div> 
+    </main>`)
+  };
+
   function displayManagerDashboard() {
     $('body').html(`
     <header>
@@ -25,7 +59,7 @@ $( document ).ready(() => {
           <h1>The Overlook Hotel</h1>
           <section class="nav-buttons-container">
             <button id="dashboard-button-js" class="dashboard-button">Dashboard</button>
-            <button id="log-out-button-js" class="log-out-button">Log Out</button>
+            <button id="logout-button-js" class="logout-button">Log Out</button>
           </section>
         </nav>
       </header>
@@ -54,7 +88,7 @@ $( document ).ready(() => {
           <nav>
             <h1>The Overlook Hotel</h1>
             <section class="nav-buttons-container">
-              <button id="log-out-button-js" class="log-out-button">Log Out</button>
+              <button id="logout-button-js" class="logout-button">Log Out</button>
             </section>
           </nav>
         </header>
@@ -75,9 +109,9 @@ $( document ).ready(() => {
             </section>
           </article>
         </main>`)
-  }
+  };
 
   function displayLoginError() {
     $('#login-error-js').toggle();
-  }
+  };
 });

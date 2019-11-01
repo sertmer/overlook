@@ -7,6 +7,8 @@
   clear: both;
 }
 
+/* ----------- general ----------------*/
+
 *,
 *:after,
 *:before {
@@ -23,6 +25,8 @@ main {
   display: flex;
 }
 
+/*-------header------------------------------- */
+
 nav {
   height: 15%;
   width: 100%;
@@ -32,9 +36,6 @@ nav {
   flex-direction: row;
 }
 
-// .hidden {
-//   display: none;
-// }
 
 h1 {
   color: $secondary-accent;
@@ -52,7 +53,7 @@ h1 {
   font-family: $heading-font;
   font-size: 1em;
   background-color: $secondary-accent;
-  width: 6%;
+  width: auto;
 }
 
 div {
@@ -92,4 +93,12 @@ input {
   color: $tertiary-accent;
   font-family: $heading-font;
   font-size: .65em;
+}
+
+.log-out-button {
+  @extend .log-in-button;
+}
+
+.dashboard-button {
+  @extend .log-in-button;
 }

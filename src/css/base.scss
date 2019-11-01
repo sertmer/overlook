@@ -32,16 +32,16 @@ h1 {
   color: $secondary-accent;
   display: inline-block;
   margin: 1% 1%;
-  font-family: $heading-font;
+  font-family: $fancy-font;
   font-size: 2em;
 }
 
 .log-in-button {
-  @include rounded-corners(7%);
+  @include rounded-corners(5px);
   display: inline-block;
   margin: 1%;
   padding: 1%;
-  font-family: $heading-font;
+  font-family: $main-font;
   font-size: 1em;
   background-color: $secondary-accent;
   width: auto;
@@ -64,7 +64,7 @@ form {
   flex-direction: column;
   padding: 5%;
   margin: 2%;
-  font-family: $heading-font;
+  font-family: $main-font;
   color: $primary-accent;
   font-size: 1.5em;
 }
@@ -75,14 +75,14 @@ input {
 }
 
 .log-in-submit-button {
-  @include rounded-corners(7%);
+  @include rounded-corners(5px);
   width: 40%;
   height: 40px;
   background-color: $primary-accent;
   margin: 1% 1% 1% 1%;
   padding: 2.5%;
   color: $tertiary-accent;
-  font-family: $heading-font;
+  font-family: $main-font;
   font-size: .65em;
 }
 
@@ -111,10 +111,17 @@ body {
 }
 
 .operations {
-  justify-content: flex-start;
+  @include rounded-corners(5px);
+  font-family: $main-font;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $tertiary-accent;
-  width: 30%;
+  width: 25vw;
+  margin: 1%;
+  height: 90vh;
   h2 {
     color: $primary-accent;
+    margin: 10px;
   }
 }

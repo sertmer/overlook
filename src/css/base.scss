@@ -102,3 +102,9 @@ input {
 .dashboard-button {
   @extend .log-in-button;
 }
+
+.nav-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -3,15 +3,17 @@ import './css/base.scss';
 
 
 $( document ).ready(() => {
-  $('#log-in-button-js').click(() => {
-    $('#log-in-menu-js').slideToggle('slow')
+  $('#login-button-js').click(() => {
+    $('#login-menu-js').slideToggle('slow')
   });
 
-  $('#log-in-submit-button-js').click((e) => {
+  $('#login-submit-button-js').click((e) => {
     event.preventDefault();
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
       displayManagerDashbard();
-    } 
+    } else {
+      displayLoginError();
+    }
   });
 
   function displayManagerDashbard() {
@@ -45,6 +47,6 @@ $( document ).ready(() => {
   }
 
   function displayLoginError() {
-
+    $('#login-error-js').toggle();
   }
 });

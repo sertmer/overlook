@@ -36,7 +36,7 @@ h1 {
   font-size: 2em;
 }
 
-.log-in-button {
+.login-button {
   @include rounded-corners(5px);
   display: inline-block;
   margin: 1%;
@@ -53,7 +53,7 @@ div {
   justify-content: flex-end;
 }
 
-.log-in-menu {
+.login-menu {
   width: 20%;
   background-color: $secondary-accent;
 }
@@ -74,7 +74,7 @@ input {
   height: 40px;
 }
 
-.log-in-submit-button {
+.login-submit-button {
   @include rounded-corners(5px);
   width: 40%;
   height: 40px;
@@ -87,11 +87,11 @@ input {
 }
 
 .log-out-button {
-  @extend .log-in-button;
+  @extend .login-button;
 }
 
 .dashboard-button {
-  @extend .log-in-button;
+  @extend .login-button;
 }
 
 .nav-buttons-container {

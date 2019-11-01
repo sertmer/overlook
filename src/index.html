@@ -9,18 +9,19 @@
     <header>
       <nav>
         <h1>The Overlook Hotel</h1>
-        <button id="log-in-button-js" class="log-in-button">Log In</button>
+        <button id="login-button-js" class="login-button">Log In</button>
       </nav>
     </header>
     <main>
       <div>
-        <section id="log-in-menu-js" class="log-in-menu" hidden>
+        <section id="login-menu-js" class="login-menu" hidden>
           <form>
             <label for="username-input">Username</label>
             <input type="text" id="username-input">
             <label for="password-input">Password</label>
             <input type="password" id="password-input">
-            <button type="submit" class="log-in-submit-button" id="log-in-submit-button-js">Submit</button>
+            <p class="login-error" id="login-error-js" hidden>Invalid Login</p>
+            <button type="submit" class="login-submit-button" id="login-submit-button-js">Submit</button>
           </form>
         </section>
       </div> 

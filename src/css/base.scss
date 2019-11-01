@@ -7,7 +7,7 @@
   clear: both;
 }
 
-/* ----------- general ----------------*/
+/*---------------- general ----------------*/
 
 *,
 *:after,
@@ -17,15 +17,7 @@
   padding: 0;
 }
 
-body {
-  background-color: $primary-background;
-}
-
-main {
-  display: flex;
-}
-
-/*-------header------------------------------- */
+/*---------------- nav ----------------*/
 
 nav {
   height: 15%;
@@ -35,7 +27,6 @@ nav {
   justify-content: space-between;
   flex-direction: row;
 }
-
 
 h1 {
   color: $secondary-accent;
@@ -107,4 +98,23 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/*---------------- main ----------------*/
+
+main {
+  display: flex;
+}
+
+body {
+  background-color: $primary-background;
+}
+
+.operations {
+  justify-content: flex-start;
+  background-color: $tertiary-accent;
+  width: 30%;
+  h2 {
+    color: $primary-accent;
+  }
 }

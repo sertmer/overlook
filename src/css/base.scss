@@ -110,6 +110,7 @@ body {
   background-color: $primary-background;
 }
 
+.quick-look,
 .operations {
   @include rounded-corners(5px);
   font-family: $main-font;

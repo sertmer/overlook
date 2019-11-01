@@ -7,9 +7,14 @@ $( document ).ready(() => {
     $('#log-in-menu-js').slideToggle('slow')
   });
 
-  $('#log-in-submit-button-js').click(() => {
-    console.log('heyo')
+  $('#log-in-submit-button-js').click((e) => {
     event.preventDefault();
+    if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
+      displayManagerDashbard();
+    } 
+  });
+
+  function displayManagerDashbard() {
     $('body').html(`
     <header>
         <nav>
@@ -37,6 +42,9 @@ $( document ).ready(() => {
             </section>
         </article>
       </main>`)
-  });
+  }
 
+  function displayLoginError() {
+
+  }
 });

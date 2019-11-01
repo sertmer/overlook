@@ -1,20 +1,42 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
-$( document ).ready(function() {
-  $('#log-in-button-js').click (function() {
+$( document ).ready(() => {
+  $('#log-in-button-js').click(() => {
     $('#log-in-menu-js').slideToggle('slow')
-  })
+  });
+
+  $('#log-in-submit-button-js').click(() => {
+    console.log('heyo')
+    event.preventDefault();
+    $('body').html(`
+    <header>
+        <nav>
+          <h1>The Overlook Hotel</h1>
+          <section class="nav-buttons-container">
+            <button id="dashboard-button-js" class="dashboard-button">Dashboard</button>
+            <button id="log-out-button-js" class="log-out-button">Log Out</button>
+          </section>
+        </nav>
+      </header>
+      <main>
+        <article class="operations">
+          <h2>Operations</h2>
+          <section class="operations-vacancies">
+            <h3>Vacancies</h3>
+            <p>10 rooms available</p>
+          </section>
+          <section class="operations-occupied">
+            <h3>Rooms Occupied</h3>
+            <p>40% full</p>
+          </section>
+          <section class="operations-revenue">
+              <h3>Total Revenue</h3>
+              <p>💰</p>
+            </section>
+        </article>
+      </main>`)
+  });
+
 });
-
-
-
-

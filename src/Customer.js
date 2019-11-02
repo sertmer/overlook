@@ -5,6 +5,7 @@ class Customer extends Hotel {
     super(bookings, rooms)
     this.id = user.id;
     this.name = user.name;
+    this.bookings = this.getMyBookings();
   }
 
   getMyBookings() {

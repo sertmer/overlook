@@ -98,7 +98,7 @@ beforeEach(() => {
   hotel = new Hotel(bookings, rooms);
 })
 
-describe('hotel', () => {
+describe('Hotel', () => {
   it('should be a function', () => {
     expect(Hotel).to.be.a('function');
   })

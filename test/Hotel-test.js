@@ -1,6 +1,4 @@
-const chai = require('chai');
-const expect = chai.expect;
-
+import chai, { expect } from 'chai';
 import Hotel from '../src/Hotel';
 
 let bookings;
@@ -103,6 +101,46 @@ beforeEach(() => {
 describe('hotel', () => {
   it('should be a function', () => {
     expect(Hotel).to.be.a('function');
+  })
+
+  it('should have bookings', () => {
+    expect(hotel).to.have.deep.property('bookings', [
+      {
+        id: 1572293130156,
+        userID: 19,
+        date: "2019/11/06",
+        roomNumber: 18,
+        roomServiceCharges: []
+      },
+      {
+        id: 1572293130159,
+        userID: 21,
+        date: "2019/11/12",
+        roomNumber: 8,
+        roomServiceCharges: []
+      },
+      {
+        id: 1572293130159,
+        userID: 12,
+        date: "2019/10/29",
+        roomNumber: 10,
+        roomServiceCharges: []
+      },
+      {
+        id: 1572293130159,
+        userID: 27,
+        date: "2019/11/15",
+        roomNumber: 4,
+        roomServiceCharges: []
+      },
+      {
+        id: 1572293130160,
+        userID: 16,
+        date: "2019/11/06",
+        roomNumber: 7,
+        roomServiceCharges: []
+      }
+    ])
   })
 
   describe('getBookings', () => {

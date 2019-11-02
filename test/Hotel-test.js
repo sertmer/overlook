@@ -6,6 +6,7 @@ import Hotel from '../src/Hotel';
 let bookings;
 let users;
 let rooms;
+let hotel;
 
 beforeEach(() => {
   bookings = [
@@ -112,5 +113,12 @@ beforeEach(() => {
       }
   ];
 
+  hotel = new Hotel(bookings, users, rooms);
 })
 
+describe('hotel', () => {
+  it('should be a function', () => {
+    console.log(hotel)
+    expect(Hotel).to.be.a('function');
+  })
+})

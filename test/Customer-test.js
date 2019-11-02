@@ -99,7 +99,7 @@ beforeEach(() => {
     }
   ];
 
-  customer = new Customer(1, "Leatha Ullrich", bookings, rooms)
+  customer = new Customer({ id: 1, name: "Leatha Ullrich"}, bookings, rooms)
 })
 
 describe('Customer', () => {

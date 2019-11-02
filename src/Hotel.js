@@ -28,5 +28,21 @@ class Hotel {
       return totalRevenue;
     }, 0)
   }
+
+  getAvailableRooms(date) {
+    let bookingsByDate = this.getBookings(date);
+    let bookedRooms = [];
+    bookingsByDate.forEach(booking => {
+      bookedRooms.push(booking.roomNumber)
+    })
+    return this.rooms.reduce((availableRooms, room) => {
+      if (!bookedRooms.includes(room.number)) {
+        availableRooms.push(room);
+      }
+      return availableRooms;
+    }, [])
+  }
+
+  // loop(reduce - array of available rooms) through rooms, and for each room, compare to bookings. If bookings ! includes the room, push to accumulatore
 }
 export default Hotel;

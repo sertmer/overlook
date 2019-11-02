@@ -110,6 +110,14 @@ beforeEach(() => {
       bedSize: "queen",
       numBeds: 2,
       costPerNight: 231.46
+    },
+    {
+      number: 1,
+      roomType: "residential suite",
+      bidet: true,
+      bedSize: "queen",
+      numBeds: 1,
+      costPerNight: 358.4
     }
   ];
 
@@ -164,6 +172,44 @@ describe('hotel', () => {
     })
   })
 
+  describe('getAvailableRooms', () => {
+    it('should get available rooms by date', () => {
+      expect(hotel.getAvailableRooms("2019/11/06")).to.deep.equal([
+        {
+          number: 8,
+          roomType: "junior suite",
+          bidet: false,
+          bedSize: "king",
+          numBeds: 1,
+          costPerNight: 261.26
+        },
+        {
+          number: 10,
+          roomType: "suite",
+          bidet: false,
+          bedSize: "twin",
+          numBeds: 1,
+          costPerNight: 497.64
+        },
+        {
+          number: 4,
+          roomType: "single room",
+          bidet: false,
+          bedSize: "queen",
+          numBeds: 1,
+          costPerNight: 429.44
+        },
+        {
+          number: 1,
+          roomType: "residential suite",
+          bidet: true,
+          bedSize: "queen",
+          numBeds: 1,
+          costPerNight: 358.4
+        }
+      ])
+    })
+  })
 
 })
 

@@ -3,30 +3,30 @@ import './css/base.scss';
 
 
 $( document ).ready(() => {
-  $('#login-button-js').click(() => {
-    $('#login-menu-js').slideToggle('slow')
-  });
+  $('body').click(() => {
+    if (event.target.id === 'login-button-js') {
+      toggleLoginMenu();
+    } if (event.target.id === 'login-submit-button-js') {
+      evaluateLogin();
+    } if (event.target.id === 'logout-button-js') {
+      logout();
+    }
+  })
 
-  $('#login-submit-button-js').click(() => {
-    event.preventDefault();
+  function evaluateLogin() {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
       displayManagerDashboard();
     } if ($('#password-input').val() === 'overlook2019') {
       displayCustomerDashboard();
     } else {
+      event.preventDefault();
       displayLoginError();
     }
-  });
+  };
 
-  $('body').click(() => {
-    console.log(event.target.id)
-    if (event.target.id === 'logout-button-js') {
-      logout();
-    }
-  });
-
-  //logout works, but need to add listner to body, and have a bunch of 
-  //conditionals to account for dynamic targets
+  function toggleLoginMenu() {
+    $('#login-menu-js').slideToggle('slow')
+  }
 
   function logout() {
     $('body').html(`
@@ -112,6 +112,8 @@ $( document ).ready(() => {
   };
 
   function displayLoginError() {
+    $('#username-input').val('');
+    $('#password-input').val('');
     $('#login-error-js').toggle();
   };
 });

@@ -26,7 +26,7 @@ class Hotel {
     } else {
       let todaysBookings = this.getBookings(date);
       return todaysBookings.reduce((totalRevenue, booking) => {
-        let bookedRooms = this.rooms.forEach(room => {
+        this.rooms.forEach(room => {
           if (booking.roomNumber === room.number) {
             totalRevenue += room.costPerNight
           }

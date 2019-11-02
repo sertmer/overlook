@@ -5,12 +5,16 @@ class Hotel {
     this.rooms = rooms;
   }
 
-  getBookings(date) {
-    return this.bookings.filter(booking => booking.date === date) 
+  getBookings(date, id) {
+    if (id) {
+      return this.bookings.filter(booking => booking.userID === id)
+    } else {
+      return this.bookings.filter(booking => booking.date === date) 
+    }
   }
 
-  calculateRevenue(date) {
+  // calculateRevenue(date) {
 
-  }
+  // }
 }
 export default Hotel;

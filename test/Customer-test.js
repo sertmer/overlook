@@ -104,8 +104,16 @@ beforeEach(() => {
 
 describe('Customer', () => {
   it('should be a function', () => {
-    expect(Customer).to.be.a('function');
+    expect(Customer).to.be.a('function')
   });
+
+  it('should have an ID', () => {
+    expect(customer.id).to.equal(1)
+  })
+
+  it('should have a name', () => {
+    expect(customer.name).to.equal("Leatha Ullrich")
+  })
 
   describe('getMyBookings', () => {
     it('should find their own bookings', () => {

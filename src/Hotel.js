@@ -43,6 +43,8 @@ class Hotel {
     }, [])
   }
 
-  // loop(reduce - array of available rooms) through rooms, and for each room, compare to bookings. If bookings ! includes the room, push to accumulatore
+  getFilteredRooms(key, value) {
+    return this.rooms.filter(room => room[key] === value);
+  }
 }
 export default Hotel;

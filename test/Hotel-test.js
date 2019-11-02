@@ -211,5 +211,20 @@ describe('hotel', () => {
     })
   })
 
+  describe('getFilteredRooms', () => {
+    it('should filter rooms by roomType', () => {
+      expect(hotel.getFilteredRooms("residential suite").to.deep.equal([
+        {
+          number: 1,
+          roomType: "residential suite",
+          bidet: true,
+          bedSize: "queen",
+          numBeds: 1,
+          costPerNight: 358.4
+        }
+      ]))
+    }) 
+  })
 })
 
+//write test for bookings, users, rooms

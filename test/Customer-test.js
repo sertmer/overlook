@@ -1,9 +1,9 @@
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
+import Customer from '../src/Customer';
 
 chai.use(spies);
 
-import Customer from '../src/Customer';
 
 let customer;
 let bookings;

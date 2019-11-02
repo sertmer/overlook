@@ -6,8 +6,13 @@ class Customer extends Hotel {
     this.id = id;
     this.name = name;
   }
+
   getMyBookings() {
-    return this.getBookings('', this.id)
+    return this.getBookings('', this.id);
+  }
+
+  calculateTotalExpenses() {
+    return this.calculateRevenue('', this.id);
   }
 }
 

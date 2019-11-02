@@ -154,9 +154,16 @@ describe('hotel', () => {
     })
   })
 
-  it('should calculate total revenue by date', () => {
-    expect(hotel.calculateRevenue("2019/11/06")).to.equal(727.87)
+  describe('calculateRevenue', () => {
+    it('should calculate total revenue by date', () => {
+      expect(hotel.calculateRevenue("2019/11/06")).to.equal(727.87)
+    })
+
+    it('should calculate total spent by ID', () => {
+      expect(hotel.calculateRevenue('', 12)).to.equal(497.64)
+    })
   })
-  
+
+
 })
 

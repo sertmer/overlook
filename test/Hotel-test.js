@@ -9,14 +9,14 @@ beforeEach(() => {
   bookings = [
     {
       id: 1572293130156,
-      userID: 19,
+      userID: 1,
       date: "2019/11/06",
       roomNumber: 18,
       roomServiceCharges: []
     },
     {
       id: 1572293130159,
-      userID: 21,
+      userID: 1,
       date: "2019/11/12",
       roomNumber: 8,
       roomServiceCharges: []
@@ -107,14 +107,14 @@ describe('hotel', () => {
     expect(hotel).to.have.deep.property('bookings', [
       {
         id: 1572293130156,
-        userID: 19,
+        userID: 1,
         date: "2019/11/06",
         roomNumber: 18,
         roomServiceCharges: []
       },
       {
         id: 1572293130159,
-        userID: 21,
+        userID: 1,
         date: "2019/11/12",
         roomNumber: 8,
         roomServiceCharges: []
@@ -201,7 +201,7 @@ describe('hotel', () => {
       expect(hotel.getBookings("2019/11/06")).to.deep.equal([
         {
           id: 1572293130156,
-          userID: 19,
+          userID: 1,
           date: "2019/11/06",
           roomNumber: 18,
           roomServiceCharges: []

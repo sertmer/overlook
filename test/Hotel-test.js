@@ -213,7 +213,7 @@ describe('hotel', () => {
 
   describe('getFilteredRooms', () => {
     it('should filter rooms by roomType', () => {
-      expect(hotel.getFilteredRooms("residential suite").to.deep.equal([
+      expect(hotel.getFilteredRooms("roomType", "residential suite")).to.deep.equal([
         {
           number: 1,
           roomType: "residential suite",
@@ -222,7 +222,7 @@ describe('hotel', () => {
           numBeds: 1,
           costPerNight: 358.4
         }
-      ]))
+      ])
     }) 
   })
 })

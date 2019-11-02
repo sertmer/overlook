@@ -1,10 +1,10 @@
 import Hotel from './Hotel';
 
 class Customer extends Hotel {
-  constructor(id, name, bookings, rooms) {
+  constructor(user, bookings, rooms) {
     super(bookings, rooms)
-    this.id = id;
-    this.name = name;
+    this.id = user.id;
+    this.name = user.name;
   }
 
   getMyBookings() {

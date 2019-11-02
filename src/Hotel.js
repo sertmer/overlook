@@ -23,7 +23,17 @@ class Hotel {
         totalSpent += match.costPerNight;
         return totalSpent;
       }, 0)
-    } 
+    } else {
+      let todaysBookings = this.getBookings(date);
+      return todaysBookings.reduce((totalRevenue, booking) => {
+        let bookedRooms = this.rooms.forEach(room => {
+          if (booking.roomNumber === room.number) {
+            totalRevenue += room.costPerNight
+          }
+        })
+        return totalRevenue;
+      }, 0)
+    }
   }
 }
 export default Hotel;

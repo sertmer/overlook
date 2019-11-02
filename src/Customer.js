@@ -6,6 +6,10 @@ class Customer extends Hotel {
     this.id = id;
     this.name = name;
   }
+  getMyBookings() {
+    return this.getBookings('', this.id)
+  }
 }
+
 
 export default Customer;

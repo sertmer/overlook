@@ -49,68 +49,68 @@ beforeEach(() => {
 
   users = [
     {
-    id: 1,
-    name: "Leatha Ullrich"
+      id: 12,
+      name: "Kari Keeling"
     },
     {
-    id: 2,
-    name: "Rocio Schuster"
+      id: 16,
+      name: "Garry Mills"
     },
     {
-    id: 3,
-    name: "Kelvin Schiller"
+      id: 19,
+      name: "Leatha Hettinger"
     },
     {
-    id: 4,
-    name: "Kennedi Emard"
+      id: 21,
+      name: "Kelsie Rath"
     },
     {
-    id: 5,
-    name: "Rhiannon Little"
-    }
+      id: 27,
+      name: "Sigrid Barrows"
+    },
   ];
 
   rooms = [
     {
-      number: 1,
-      roomType: "residential suite",
-      bidet: true,
-      bedSize: "queen",
-      numBeds: 1,
-      costPerNight: 358.4
-      },
-      {
-      number: 2,
-      roomType: "suite",
+      number: 18,
+      roomType: "junior suite",
       bidet: false,
-      bedSize: "full",
+      bedSize: "king",
       numBeds: 2,
-      costPerNight: 477.38
-      },
-      {
-      number: 3,
-      roomType: "single room",
+      costPerNight: 496.41
+    },
+    {
+      number: 8,
+      roomType: "junior suite",
       bidet: false,
       bedSize: "king",
       numBeds: 1,
-      costPerNight: 491.14
-      },
-      {
+      costPerNight: 261.26
+    },
+    {
+      number: 10,
+      roomType: "suite",
+      bidet: false,
+      bedSize: "twin",
+      numBeds: 1,
+      costPerNight: 497.64
+    },
+    {
       number: 4,
       roomType: "single room",
       bidet: false,
       bedSize: "queen",
       numBeds: 1,
       costPerNight: 429.44
-      },
-      {
-      number: 5,
+    },
+    {
+      number: 7,
       roomType: "single room",
-      bidet: true,
+      bidet: false,
       bedSize: "queen",
       numBeds: 2,
-      costPerNight: 340.17
-      }
+      costPerNight: 231.46
+    }
   ];
 
   hotel = new Hotel(bookings, users, rooms);
@@ -118,7 +118,11 @@ beforeEach(() => {
 
 describe('hotel', () => {
   it('should be a function', () => {
-    console.log(hotel)
     expect(Hotel).to.be.a('function');
   })
+
+  it('should calculate total revenue by date', () => {
+    expect(hotel.calculateRevenue("2019/11/06")).to.equal(727.87)
+  })
 })
+

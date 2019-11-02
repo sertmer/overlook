@@ -9,12 +9,21 @@ class Hotel {
     if (id) {
       return this.bookings.filter(booking => booking.userID === id)
     } else {
-      return this.bookings.filter(booking => booking.date === date) 
+      return this.bookings.filter(booking => booking.date === date)
     }
   }
 
-  // calculateRevenue(date) {
-
-  // }
+  calculateRevenue(date, id) {
+    if (id) {
+      let userBookings = this.getBookings('', id);
+      return userBookings.reduce((totalSpent, booking) => {
+        let match = this.rooms.find(room => {
+          return room.number === booking.roomNumber
+        })
+        totalSpent += match.costPerNight;
+        return totalSpent;
+      }, 0)
+    } 
+  }
 }
 export default Hotel;

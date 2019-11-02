@@ -121,24 +121,40 @@ describe('hotel', () => {
     expect(Hotel).to.be.a('function');
   })
 
-  it('should get bookings by date', () => {
-    expect(hotel.getBookings("2019/11/06")).to.deep.equal([
-      {
-        id: 1572293130156,
-        userID: 19,
-        date: "2019/11/06",
-        roomNumber: 18,
-        roomServiceCharges: [ ]
-      },
-      {
-        id: 1572293130160,
-        userID: 16,
-        date: "2019/11/06",
-        roomNumber: 7,
-        roomServiceCharges: [ ]
-      }
-    ])
+  describe('getBookings', () => {
+    it('should get bookings by date', () => {
+      expect(hotel.getBookings("2019/11/06")).to.deep.equal([
+        {
+          id: 1572293130156,
+          userID: 19,
+          date: "2019/11/06",
+          roomNumber: 18,
+          roomServiceCharges: [ ]
+        },
+        {
+          id: 1572293130160,
+          userID: 16,
+          date: "2019/11/06",
+          roomNumber: 7,
+          roomServiceCharges: [ ]
+        }
+      ])
+    })
+
+    it('should get bookings by ID', () => {
+      expect(hotel.getBookings('', 12)).to.deep.equal([
+        {
+          id: 1572293130159,
+          userID: 12,
+          date: "2019/10/29",
+          roomNumber: 10,
+          roomServiceCharges: [ ]
+        }
+      ])
+    })
   })
+
+
   // it('should calculate total revenue by date', () => {
   //   expect(hotel.calculateRevenue("2019/11/06")).to.equal(727.87)
   // })

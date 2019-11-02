@@ -14,26 +14,19 @@ class Hotel {
   }
 
   calculateRevenue(date, id) {
+    let bookings;
     if (id) {
-      let userBookings = this.getBookings('', id);
-      return userBookings.reduce((totalSpent, booking) => {
-        let match = this.rooms.find(room => {
-          return room.number === booking.roomNumber
-        })
-        totalSpent += match.costPerNight;
-        return totalSpent;
-      }, 0)
+      bookings = this.getBookings('', id)
     } else {
-      let todaysBookings = this.getBookings(date);
-      return todaysBookings.reduce((totalRevenue, booking) => {
-        this.rooms.forEach(room => {
-          if (booking.roomNumber === room.number) {
-            totalRevenue += room.costPerNight
-          }
-        })
-        return totalRevenue;
-      }, 0)
-    }
+      bookings = this.getBookings(date)
+    } return bookings.reduce((totalRevenue, booking) => {
+      this.rooms.forEach(room => {
+        if (booking.roomNumber === room.number) {
+          totalRevenue += room.costPerNight
+        }
+      })
+      return totalRevenue;
+    }, 0)
   }
 }
 export default Hotel;

@@ -4,7 +4,6 @@ const expect = chai.expect;
 import Hotel from '../src/Hotel';
 
 let bookings;
-let users;
 let rooms;
 let hotel;
 
@@ -45,29 +44,6 @@ beforeEach(() => {
       roomNumber: 7,
       roomServiceCharges: []
     }
-  ];
-
-  users = [
-    {
-      id: 12,
-      name: "Kari Keeling"
-    },
-    {
-      id: 16,
-      name: "Garry Mills"
-    },
-    {
-      id: 19,
-      name: "Leatha Hettinger"
-    },
-    {
-      id: 21,
-      name: "Kelsie Rath"
-    },
-    {
-      id: 27,
-      name: "Sigrid Barrows"
-    },
   ];
 
   rooms = [
@@ -121,7 +97,7 @@ beforeEach(() => {
     }
   ];
 
-  hotel = new Hotel(bookings, users, rooms);
+  hotel = new Hotel(bookings, rooms);
 })
 
 describe('hotel', () => {
@@ -266,7 +242,7 @@ describe('hotel', () => {
           costPerNight: 231.46
         }
       ])
-      
+
       expect(hotel.getFilteredRooms("bedSize", "queen")).to.deep.equal([
         {
           number: 4,

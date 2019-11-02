@@ -30,8 +30,8 @@ class Hotel {
   }
 
   getAvailableRooms(date) {
-    let bookingsByDate = this.getBookings(date);
-    let bookedRooms = [];
+    const bookingsByDate = this.getBookings(date);
+    const bookedRooms = [];
     bookingsByDate.forEach(booking => {
       bookedRooms.push(booking.roomNumber)
     })

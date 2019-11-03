@@ -198,7 +198,7 @@ describe('Hotel', () => {
 
   describe('getBookings', () => {
     it('should get bookings by date', () => {
-      expect(hotel.getBookings("2019/11/06")).to.deep.equal([
+      expect(hotel.getBookings('date', "2019/11/06")).to.deep.equal([
         {
           id: 1572293130156,
           userID: 1,
@@ -217,7 +217,7 @@ describe('Hotel', () => {
     })
 
     it('should get bookings by ID', () => {
-      expect(hotel.getBookings('', 12)).to.deep.equal([
+      expect(hotel.getBookings('userID', 12)).to.deep.equal([
         {
           id: 1572293130159,
           userID: 12,
@@ -231,17 +231,17 @@ describe('Hotel', () => {
 
   describe('calculateRevenue', () => {
     it('should calculate total revenue by date', () => {
-      expect(hotel.calculateRevenue("2019/11/06")).to.equal(727.87)
+      expect(hotel.calculateRevenue('date',"2019/11/06")).to.equal(727.87)
     })
 
     it('should calculate total spent by ID', () => {
-      expect(hotel.calculateRevenue('', 12)).to.equal(497.64)
+      expect(hotel.calculateRevenue('userID', 12)).to.equal(497.64)
     })
   })
 
   describe('getAvailableRooms', () => {
     it('should get available rooms by date', () => {
-      expect(hotel.getAvailableRooms("2019/11/06")).to.deep.equal([
+      expect(hotel.getAvailableRooms('date', "2019/11/06")).to.deep.equal([
         {
           number: 8,
           roomType: "junior suite",

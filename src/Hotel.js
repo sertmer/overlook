@@ -4,21 +4,13 @@ class Hotel {
     this.rooms = rooms;
   }
 
-  getBookings(date, id) {
-    if (id) {
-      return this.bookings.filter(booking => booking.userID === id)
-    } else {
-      return this.bookings.filter(booking => booking.date === date)
-    }
+  getBookings(key, value) {
+    return this.bookings.filter(booking => booking[key] === value)
   }
 
-  calculateRevenue(date, id) {
-    let bookings;
-    if (id) {
-      bookings = this.getBookings('', id)
-    } else {
-      bookings = this.getBookings(date)
-    } return bookings.reduce((totalRevenue, booking) => {
+  calculateRevenue(key, value) {
+    let bookings = this.getBookings(key, value)
+    return bookings.reduce((totalRevenue, booking) => {
       this.rooms.forEach(room => {
         if (booking.roomNumber === room.number) {
           totalRevenue += room.costPerNight
@@ -28,8 +20,8 @@ class Hotel {
     }, 0)
   }
 
-  getAvailableRooms(date) {
-    const bookingsByDate = this.getBookings(date);
+  getAvailableRooms(key, value) {
+    const bookingsByDate = this.getBookings(key, value);
     const bookedRooms = [];
     bookingsByDate.forEach(booking => {
       bookedRooms.push(booking.roomNumber)

@@ -9,7 +9,7 @@ class Customer extends Hotel {
   }
 
   getMyBookings() {
-    return this.getBookings('', this.id);
+    return this.getBookings('userID', this.id);
   }
 
   calculateTotalExpenses() {

@@ -1,6 +1,36 @@
 import $ from 'jquery';
 import './css/base.scss';
+import Manager from './Manager';
+import Customer from './Customer';
 
+let customer;
+let manager;
+
+let users = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+  .then(response => response.json())
+  .then(data => data.users)
+  .catch(err => console.log(err));
+
+let rooms = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+  .then(response => response.json())
+  .then(data => data.rooms)
+  .catch(err => console.log(err));
+
+let bookings = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+  .then(response => response.json())
+  .then(data => data.bookings)
+  .catch(err => console.log(err));
+
+Promise.all([users, rooms, bookings])
+  .then(element => {
+    users = element[0];
+    rooms = element[1];
+    bookings = element[2];
+    // customer = new Customer()
+  })
+  .then(() => {
+    console.log("foo")
+  })
 
 $( document ).ready(() => {
   $('body').click(() => {

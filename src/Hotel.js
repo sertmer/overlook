@@ -15,13 +15,9 @@ class Hotel {
     // }
   }
 
-  calculateRevenue(date, id) {
-    let bookings;
-    if (id) {
-      bookings = this.getBookings('', id)
-    } else {
-      bookings = this.getBookings(date)
-    } return bookings.reduce((totalRevenue, booking) => {
+  calculateRevenue(key, value) {
+    let bookings = this.getBookings(key, value)
+    return bookings.reduce((totalRevenue, booking) => {
       this.rooms.forEach(room => {
         if (booking.roomNumber === room.number) {
           totalRevenue += room.costPerNight

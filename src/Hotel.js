@@ -6,13 +6,6 @@ class Hotel {
 
   getBookings(key, value) {
     return this.bookings.filter(booking => booking[key] === value)
-  
-
-    // if (id) {
-    //   return this.bookings.filter(booking => booking.userID === id)
-    // } else {
-    //   return this.bookings.filter(booking => booking.date === date)
-    // }
   }
 
   calculateRevenue(key, value) {

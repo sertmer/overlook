@@ -198,7 +198,7 @@ describe('Hotel', () => {
 
   describe('getBookings', () => {
     it('should get bookings by date', () => {
-      expect(hotel.getBookings("2019/11/06")).to.deep.equal([
+      expect(hotel.getBookings('date', "2019/11/06")).to.deep.equal([
         {
           id: 1572293130156,
           userID: 1,
@@ -217,7 +217,7 @@ describe('Hotel', () => {
     })
 
     it('should get bookings by ID', () => {
-      expect(hotel.getBookings('', 12)).to.deep.equal([
+      expect(hotel.getBookings('userID', 12)).to.deep.equal([
         {
           id: 1572293130159,
           userID: 12,

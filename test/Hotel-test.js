@@ -241,7 +241,7 @@ describe('Hotel', () => {
 
   describe('getAvailableRooms', () => {
     it('should get available rooms by date', () => {
-      expect(hotel.getAvailableRooms(date, "2019/11/06")).to.deep.equal([
+      expect(hotel.getAvailableRooms('date', "2019/11/06")).to.deep.equal([
         {
           number: 8,
           roomType: "junior suite",

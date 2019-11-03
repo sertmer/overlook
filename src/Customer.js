@@ -13,7 +13,7 @@ class Customer extends Hotel {
   }
 
   calculateTotalExpenses() {
-    return this.calculateRevenue('', this.id);
+    return this.calculateRevenue('userID', this.id);
   }
 }
 

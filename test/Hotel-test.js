@@ -235,7 +235,7 @@ describe('Hotel', () => {
     })
 
     it('should calculate total spent by ID', () => {
-      expect(hotel.calculateRevenue('', 12)).to.equal(497.64)
+      expect(hotel.calculateRevenue('userID', 12)).to.equal(497.64)
     })
   })
 

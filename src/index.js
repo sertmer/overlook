@@ -40,6 +40,8 @@ $(document).ready(() => {
       evaluateLogin();
     } if (event.target.id === 'logout-button-js') {
       logout();
+    } if (event.target.id === 'roomtype-dropdown') {
+      toggleRoomFilterMenu();
     }
   })
 
@@ -59,7 +61,11 @@ $(document).ready(() => {
   };
 
   function toggleLoginMenu() {
-    $('#login-menu-js').slideToggle('slow')
+    $('#login-menu-js').slideToggle('slow');
+  }
+
+  function toggleRoomFilterMenu() {
+    $('#roomtype-dropdown').slideToggle('slow');
   }
 
   function logout() {
@@ -111,6 +117,20 @@ $(document).ready(() => {
               <h3>Your Bookings</h3>
             </section>
             <section id="customer-loyalty">
+            </section>
+          </article>
+          <article class="customer-bookings" id="customer-bookings-js">
+            <section class="booking-filters">
+              <input class="flatpickr" type="text" placeholder="Select Date..."> 
+              <form id="roomtype-dropdown-js" hidden>
+                <select name="room-type">
+                <option value="residential suite">Residential Suite</option>
+                <option value="suite">Suite</option>
+                <option value="single room">Single Room</option>
+                <option value="junior suite">Junior Suite</option>
+                </select>
+                <input type="submit" value="Submit">
+              </form>
             </section>
           </article>
         </main>`)

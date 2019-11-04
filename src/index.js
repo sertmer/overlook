@@ -45,10 +45,10 @@ $( document ).ready(() => {
 
   function evaluateLogin() {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
-      displayManagerDashboard();
+      displayDashboard('manager');
     } if ($('#password-input').val() === 'overlook2019') {
       instantiateCustomerById();
-      displayCustomerDashboard();
+      displayDashboard();
       displayCustomerBookings();
     } else {
       event.preventDefault();
@@ -84,7 +84,8 @@ $( document ).ready(() => {
     </main>`)
   };
 
-  function displayManagerDashboard() {
+  function displayDashboard(user) {
+    if (user === 'manager') {
     $('body').html(`
     <header>
         <nav>
@@ -112,6 +113,29 @@ $( document ).ready(() => {
             </section>
         </article>
       </main>`)
+    } else {
+      $('body').html(`
+    <header>
+          <nav>
+            <h1>The Overlook Hotel</h1>
+            <section class="nav-buttons-container">
+              <button id="logout-button-js" class="logout-button">Log Out</button>
+            </section>
+          </nav>
+        </header>
+        <main>
+          <article class="quick-look">
+            <h2>Quick Look</h2>
+            <section id="customer-bookings">
+              <h3>Your Bookings</h3>
+            </section>
+            <section id="customer-loyalty">
+                <h3>Loyalty Points</h3>
+                <p>x points</p>
+            </section>
+          </article>
+        </main>`)
+    }
   }
 
   function displayCustomerDashboard() {
@@ -154,10 +178,10 @@ $( document ).ready(() => {
     customer = new Customer(findCustomerByID(), bookings, rooms)
   }
 
-  function populateCustomerDashboard()
+  // function populateCustomerDashboard()
 
   function displayCustomerBookings() {
-    return customer.bookings.forEach(booking {
+    return customer.bookings.forEach(booking => {
       $('#customer-bookings').append(`
       <div>
         <h4>Date:</h4>

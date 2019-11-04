@@ -47,7 +47,7 @@ $( document ).ready(() => {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
       displayManagerDashboard();
     } if ($('#password-input').val() === 'overlook2019') {
-      findCustomerbyID();
+      instantiateCustomerById();
       displayCustomerDashboard();
     } else {
       event.preventDefault();
@@ -148,10 +148,14 @@ $( document ).ready(() => {
     $('#login-error-js').toggle();
   };
 
-  function findCustomerbyID() {
+  function findCustomerByID() {
     let customerId  = parseInt($('#username-input').val().slice(-2));
-    let customer = users.find(user => user.id === customerId)
-    return customer;
+    let newCustomer = users.find(user => user.id === customerId)
+    return newCustomer;
   }
 
+  function instantiateCustomerById() {
+    customer = new Customer(findCustomerByID(), bookings, rooms)
+    console.log(customer);
+  }
 });

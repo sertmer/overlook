@@ -12,6 +12,12 @@ class Manager extends Hotel {
     let customer = new Customer(foundCustomer, this.bookings, []);
     return customer;
   }
+
+  calculatePercentRoomsAvailable(key, value) {
+    let totalRooms = this.rooms.length;
+    let numAvailableRooms = this.getAvailableRooms(key, value).length;
+    return Math.round((numAvailableRooms / totalRooms) * 100)
+  }
 }
 
 export default Manager;

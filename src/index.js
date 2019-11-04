@@ -49,6 +49,7 @@ $( document ).ready(() => {
     } if ($('#password-input').val() === 'overlook2019') {
       instantiateCustomerById();
       displayCustomerDashboard();
+      displayCustomerBookings();
     } else {
       event.preventDefault();
       displayLoginError();
@@ -126,15 +127,10 @@ $( document ).ready(() => {
         <main>
           <article class="quick-look">
             <h2>Quick Look</h2>
-            <section class="previous-visits">
-              <h3>Previous Visits</h3>
-              <p>stay one</p>
+            <section id="customer-bookings">
+              <h3>Your Bookings</h3>
             </section>
-            <section class="upcoming-visits">
-              <h3>Upcoming Visits</h3>
-              <p>future stay</p>
-            </section>
-            <section class="customer-loyalty">
+            <section id="customer-loyalty">
                 <h3>Loyalty Points</h3>
                 <p>x points</p>
             </section>
@@ -156,6 +152,19 @@ $( document ).ready(() => {
 
   function instantiateCustomerById() {
     customer = new Customer(findCustomerByID(), bookings, rooms)
-    console.log(customer);
+  }
+
+  function populateCustomerDashboard()
+
+  function displayCustomerBookings() {
+    return customer.bookings.forEach(booking {
+      $('#customer-bookings').append(`
+      <div>
+        <h4>Date:</h4>
+        <p>${booking.date}</p>
+        <h4>Room:</h4>
+        <p>${booking.roomNumber}</p>
+      </div>`)
+    })
   }
 });

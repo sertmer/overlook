@@ -171,10 +171,9 @@ $(document).ready(() => {
     } else {
       return $('#customer-loyalty').html(`
           <div>
+            <h4>Loyalty Points</h4>
             <p>${customer.calculateTotalExpenses()}</p>
           </div>`)
     }
   }
-
-
 });

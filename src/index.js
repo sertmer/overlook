@@ -88,7 +88,36 @@ $(document).ready(() => {
 
   function displayDashboard(user) {
     if (user === 'manager') {
-      $('body').html(`
+      displayManagerDashboard();
+    } else {
+      displayCustomerDashboard();
+    }
+  }
+
+  function displayCustomerDashboard() {
+    $('body').html(`
+    <header>
+          <nav>
+            <h1>The Overlook Hotel</h1>
+            <section class="nav-buttons-container">
+              <button id="logout-button-js" class="logout-button">Log Out</button>
+            </section>
+          </nav>
+        </header>
+        <main>
+          <article class="quick-look">
+            <h2>Quick Look</h2>
+            <section id="customer-bookings">
+              <h3>Your Bookings</h3>
+            </section>
+            <section id="customer-loyalty">
+            </section>
+          </article>
+        </main>`)
+  }
+
+  function displayManagerDashboard() {
+    $('body').html(`
     <header>
         <nav>
           <h1>The Overlook Hotel</h1>
@@ -112,27 +141,6 @@ $(document).ready(() => {
             </section>
         </article>
       </main>`)
-    } else {
-      $('body').html(`
-    <header>
-          <nav>
-            <h1>The Overlook Hotel</h1>
-            <section class="nav-buttons-container">
-              <button id="logout-button-js" class="logout-button">Log Out</button>
-            </section>
-          </nav>
-        </header>
-        <main>
-          <article class="quick-look">
-            <h2>Quick Look</h2>
-            <section id="customer-bookings">
-              <h3>Your Bookings</h3>
-            </section>
-            <section id="customer-loyalty">
-            </section>
-          </article>
-        </main>`)
-    }
   }
 
   function displayLoginError() {
@@ -181,7 +189,6 @@ $(document).ready(() => {
   } 
 
   function displayPercentRoomsOccupied() {
-    console.log('hey');
     return $('#operations-occupied').append(`
     <p>${manager.calculatePercentRoomsAvailable('date', getCurrentDate())}%`)
   }

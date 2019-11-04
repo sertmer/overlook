@@ -170,15 +170,18 @@ body {
   @include rounded-corners(5px);
   display: inline-block;
   padding: 5px;
-  margin: 5%;
+  margin: 1%;
 }
 
 .booking-filters {
+  @include rounded-corners(5px);
   display: flex;
   flex-direction: row;
   align-items: center;
   width: auto;
   padding: 1%;
+  background-color: $primary-background;
+  margin: 1%;
 }
 
 .roomtype-dropdown {

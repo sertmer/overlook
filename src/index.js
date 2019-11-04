@@ -107,9 +107,8 @@ $(document).ready(() => {
             <h3>Rooms Occupied</h3>
             <p>40% full</p>
           </section>
-          <section class="operations-revenue">
+          <section id="operations-revenue">
               <h3>Total Revenue</h3>
-              <p>💰</p>
             </section>
         </article>
       </main>`)
@@ -161,7 +160,8 @@ $(document).ready(() => {
       displayUserData('customer','bookings');
       displayUserData('customer', 'loyalty points');
     } else {
-      displayUserData('manager', 'vacancies')
+      displayUserData('manager', 'vacancies');
+      displayUserData('manager', 'revenue');
     }
   }
 
@@ -185,9 +185,12 @@ $(document).ready(() => {
     } if (user === 'manager' && type === 'vacancies') {
       getCurrentDate();
         return $('#operations-vacancies').append(`
-        <p>${manager.getAvailableRooms().length}</p>`)
+        <p>${manager.getAvailableRooms('date', getCurrentDate()).length}</p>`)
+    } if (user === 'manager' && type === 'revenue') {
+      return $('#operations-revenue').append(`
+      <p>$${manager.calculateRevenue('date', getCurrentDate())}`)
     }
-  }
+  } 
 
   function getCurrentDate() {
     let today = new Date();

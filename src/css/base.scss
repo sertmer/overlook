@@ -137,12 +137,20 @@ body {
     height: 50%;
     overflow: auto;
     text-align: center;
+    padding: 2%;
     div {
+      @include rounded-corners(5px)
       display: flex;
       flex-direction: column;
+      background-color: $secondary-accent;
+      width: 90%;
+      height: 90%;
+      margin: .5%;
+      padding: 1%;
       h4 {
         color: $primary-accent;
         font-size: larger;
+        margin: 2px;
       }
     }
   }

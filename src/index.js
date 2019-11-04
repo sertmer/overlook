@@ -136,7 +136,8 @@ $(document).ready(() => {
             <section class="available-bookings">
             </section>
           </article>
-        </main>`)
+        </main>`);
+    addDatePicker();
   }
 
   function displayManagerDashboard() {

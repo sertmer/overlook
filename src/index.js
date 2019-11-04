@@ -2,6 +2,7 @@ import $ from 'jquery';
 import './css/base.scss';
 import Manager from './Manager';
 import Customer from './Customer';
+import flatpickr from "flatpickr";
 
 let customer;
 let manager;

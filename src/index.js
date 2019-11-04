@@ -26,7 +26,6 @@ Promise.all([users, rooms, bookings])
     users = element[0];
     rooms = element[1];
     bookings = element[2];
-    // customer = new Customer()
   })
   .then(() => {
     console.log("foo")
@@ -45,9 +44,10 @@ $(document).ready(() => {
 
   function evaluateLogin() {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
+      instantiateUser('manager')
       displayDashboard('manager');
     } if ($('#password-input').val() === 'overlook2019') {
-      instantiateCustomerById();
+      instantiateUser('customer');
       displayDashboard();
       populateCustomerDashboard();
     } else {
@@ -148,8 +148,12 @@ $(document).ready(() => {
     return newCustomer;
   }
 
-  function instantiateCustomerById() {
-    customer = new Customer(findCustomerByID(), bookings, rooms)
+  function instantiateUser(userType) {
+    if (userType === 'customer') {
+      customer = new Customer(findCustomerByID(), bookings, rooms)
+    } else {
+      manager = new Manager(users, bookings, rooms);
+    }
   }
 
   function populateCustomerDashboard() {

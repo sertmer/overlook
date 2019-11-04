@@ -171,7 +171,7 @@ $(document).ready(() => {
     } else {
       return $('#customer-loyalty').html(`
           <div>
-            <h4>Loyalty Points</h4>
+            <h3>Loyalty Points</h3>
             <p>${customer.calculateTotalExpenses()}</p>
           </div>`)
     }

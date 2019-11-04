@@ -120,17 +120,20 @@ $(document).ready(() => {
             </section>
           </article>
           <article class="customer-bookings" id="customer-bookings-js">
+          <h3 class="booking-title">Book Your Next Stay</h3>
             <section class="booking-filters">
-              <input class="flatpickr" type="text" placeholder="Select Date..."> 
-              <form id="roomtype-dropdown-js" hidden>
-                <select name="room-type">
-                <option value="residential suite">Residential Suite</option>
-                <option value="suite">Suite</option>
-                <option value="single room">Single Room</option>
-                <option value="junior suite">Junior Suite</option>
-                </select>
-                <input type="submit" value="Submit">
+              <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..."> 
+              <form class="roomtype-dropdown" id="roomtype-dropdown-js" hidden>
+              <select name="room-type">
+              <option value="residential suite">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="single room">Single Room</option>
+              <option value="junior suite">Junior Suite</option>
+              </select>
+              <input type="submit" value="Submit">
               </form>
+            </section>
+            <section class="available-bookings">
             </section>
           </article>
         </main>`)
@@ -260,4 +263,11 @@ $(document).ready(() => {
     today = `${yyyy}/${mm}/${dd}`;
     return today;
   }
+
+  function addDatePicker() {
+    flatpickr("#date-picker-js", {
+      dateFormat: "Y/m/d"
+    });
+  } 
+
 });

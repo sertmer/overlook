@@ -101,11 +101,10 @@ $(document).ready(() => {
         <article class="operations">
           <h2>Operations</h2>
           <section id="operations-vacancies">
-            <h3>Vacancies</h3>
+            <h3>Today's Vacancies</h3>
           </section>
           <section id="operations-occupied">
             <h3>Rooms Occupied</h3>
-            <p>40% full</p>
           </section>
           <section id="operations-revenue">
               <h3>Total Revenue</h3>
@@ -167,30 +166,45 @@ $(document).ready(() => {
 
   function displayUserData(user, type) {
     if (user === 'customer' && type === 'bookings'){
-      return customer.bookings.forEach(booking => {
-        $('#customer-bookings').append(`
-          <div>
-            <h4>Date:</h4>
-            <p>${booking.date}</p>
-            <h4>Room:</h4>
-            <p>${booking.roomNumber}</p>
-          </div>`)
-      })
+      displayCustomerBookings();
     } if (user === 'customer' && type === 'loyalty points') {
-        return $('#customer-loyalty').html(`
+      displayCustomerLoyalty();
+    } if (user === 'manager' && type === 'vacancies') {
+      displayManagerVacancies();
+    } if (user === 'manager' && type === 'revenue') {
+      displayManagerRevenue();
+    }
+  } 
+
+  function displayManagerRevenue() {
+    return $('#operations-revenue').append(`
+      <p>$${manager.calculateRevenue('date', getCurrentDate())}`)
+  }
+
+  function displayManagerVacancies() {
+    return $('#operations-vacancies').append(`
+    <p>${manager.getAvailableRooms('date', getCurrentDate()).length}</p>`)
+  }
+
+  function displayCustomerLoyalty() {
+    return $('#customer-loyalty').html(`
           <div>
             <h3>Loyalty Points</h3>
             <p>${customer.calculateTotalExpenses()}</p>
           </div>`)
-    } if (user === 'manager' && type === 'vacancies') {
-      getCurrentDate();
-        return $('#operations-vacancies').append(`
-        <p>${manager.getAvailableRooms('date', getCurrentDate()).length}</p>`)
-    } if (user === 'manager' && type === 'revenue') {
-      return $('#operations-revenue').append(`
-      <p>$${manager.calculateRevenue('date', getCurrentDate())}`)
-    }
-  } 
+  }
+
+  function displayCustomerBookings() {
+    return customer.bookings.forEach(booking => {
+      $('#customer-bookings').append(`
+        <div>
+          <h4>Date:</h4>
+          <p>${booking.date}</p>
+          <h4>Room:</h4>
+          <p>${booking.roomNumber}</p>
+        </div>`)
+    })
+  }
 
   function getCurrentDate() {
     let today = new Date();
@@ -209,5 +223,4 @@ $(document).ready(() => {
     today = `${yyyy}/${mm}/${dd}`;
     return today;
   }
-
 });

@@ -121,7 +121,8 @@ body {
   width: 25vw;
   margin: 1%;
   height: 88vh;
-  h2 {
+  h2,
+  h3 {
     color: $primary-accent;
     margin: 10px;
   }
@@ -134,6 +135,16 @@ body {
     width: 90%;
     margin: 2%;
     height: 50%;
+    overflow: auto;
+    text-align: center;
+    div {
+      display: flex;
+      flex-direction: column;
+      h4 {
+        color: $primary-accent;
+        font-size: larger;
+      }
+    }
   }
 }
 

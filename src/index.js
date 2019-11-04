@@ -44,11 +44,12 @@ $(document).ready(() => {
 
   function evaluateLogin() {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
-      instantiateUser('manager')
+      instantiateUser('manager');
       displayDashboard('manager');
+      populateDashboard('manager')
     } if ($('#password-input').val() === 'overlook2019') {
       instantiateUser('customer');
-      displayDashboard();
+      displayDashboard('customer');
       populateDashboard('customer');
     } else {
       event.preventDefault();
@@ -99,11 +100,10 @@ $(document).ready(() => {
       <main>
         <article class="operations">
           <h2>Operations</h2>
-          <section class="operations-vacancies">
+          <section id="operations-vacancies">
             <h3>Vacancies</h3>
-            <p>10 rooms available</p>
           </section>
-          <section class="operations-occupied">
+          <section id="operations-occupied">
             <h3>Rooms Occupied</h3>
             <p>40% full</p>
           </section>
@@ -161,6 +161,7 @@ $(document).ready(() => {
       displayUserData('customer','bookings');
       displayUserData('customer', 'loyalty points');
     } else {
+      displayUserData('manager', 'vacancies')
     }
   }
 
@@ -176,12 +177,34 @@ $(document).ready(() => {
           </div>`)
       })
     } if (user === 'customer' && type === 'loyalty points') {
-      return $('#customer-loyalty').html(`
+        return $('#customer-loyalty').html(`
           <div>
             <h3>Loyalty Points</h3>
             <p>${customer.calculateTotalExpenses()}</p>
           </div>`)
-    } 
+    } if (user === 'manager' && type === 'vacancies') {
+      getCurrentDate();
+        return $('#operations-vacancies').append(`
+        <p>${manager.getAvailableRooms().length}</p>`)
+    }
+  }
+
+  function getCurrentDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+  
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+  
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+  
+    today = `${yyyy}/${mm}/${dd}`;
+    return today;
   }
 
 });

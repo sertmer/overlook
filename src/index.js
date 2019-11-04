@@ -32,7 +32,7 @@ Promise.all([users, rooms, bookings])
     console.log("foo")
   })
 
-$( document ).ready(() => {
+$(document).ready(() => {
   $('body').click(() => {
     if (event.target.id === 'login-button-js') {
       toggleLoginMenu();
@@ -49,7 +49,7 @@ $( document ).ready(() => {
     } if ($('#password-input').val() === 'overlook2019') {
       instantiateCustomerById();
       displayDashboard();
-      displayCustomerBookings();
+      populateCustomerDashboard();
     } else {
       event.preventDefault();
       displayLoginError();
@@ -86,7 +86,7 @@ $( document ).ready(() => {
 
   function displayDashboard(user) {
     if (user === 'manager') {
-    $('body').html(`
+      $('body').html(`
     <header>
         <nav>
           <h1>The Overlook Hotel</h1>
@@ -130,14 +130,12 @@ $( document ).ready(() => {
               <h3>Your Bookings</h3>
             </section>
             <section id="customer-loyalty">
-                <h3>Loyalty Points</h3>
-                <p>x points</p>
             </section>
           </article>
         </main>`)
     }
   }
-  
+
   function displayLoginError() {
     $('#username-input').val('');
     $('#password-input').val('');
@@ -145,7 +143,7 @@ $( document ).ready(() => {
   };
 
   function findCustomerByID() {
-    let customerId  = parseInt($('#username-input').val().slice(-2));
+    let customerId = parseInt($('#username-input').val().slice(-2));
     let newCustomer = users.find(user => user.id === customerId)
     return newCustomer;
   }
@@ -154,17 +152,29 @@ $( document ).ready(() => {
     customer = new Customer(findCustomerByID(), bookings, rooms)
   }
 
-  // function populateCustomerDashboard()
-
-  function displayCustomerBookings() {
-    return customer.bookings.forEach(booking => {
-      $('#customer-bookings').append(`
-      <div>
-        <h4>Date:</h4>
-        <p>${booking.date}</p>
-        <h4>Room:</h4>
-        <p>${booking.roomNumber}</p>
-      </div>`)
-    })
+  function populateCustomerDashboard() {
+    displayCustomerData('bookings');
+    displayCustomerData('loyalty points');
   }
+
+  function displayCustomerData(type) {
+    if (type == 'bookings'){
+      return customer.bookings.forEach(booking => {
+        $('#customer-bookings').append(`
+          <div>
+            <h4>Date:</h4>
+            <p>${booking.date}</p>
+            <h4>Room:</h4>
+            <p>${booking.roomNumber}</p>
+          </div>`)
+      })
+    } else {
+      return $('#customer-loyalty').html(`
+          <div>
+            <p>${customer.calculateTotalExpenses()}</p>
+          </div>`)
+    }
+  }
+
+
 });

@@ -49,7 +49,7 @@ $(document).ready(() => {
     } if ($('#password-input').val() === 'overlook2019') {
       instantiateUser('customer');
       displayDashboard();
-      populateCustomerDashboard();
+      populateDashboard('customer');
     } else {
       event.preventDefault();
       displayLoginError();
@@ -156,13 +156,16 @@ $(document).ready(() => {
     }
   }
 
-  function populateCustomerDashboard() {
-    displayCustomerData('bookings');
-    displayCustomerData('loyalty points');
+  function populateDashboard(userType) {
+    if (userType === 'customer') {
+      displayUserData('customer','bookings');
+      displayUserData('customer', 'loyalty points');
+    } else {
+    }
   }
 
-  function displayCustomerData(type) {
-    if (type == 'bookings'){
+  function displayUserData(user, type) {
+    if (user === 'customer' && type === 'bookings'){
       return customer.bookings.forEach(booking => {
         $('#customer-bookings').append(`
           <div>
@@ -172,12 +175,13 @@ $(document).ready(() => {
             <p>${booking.roomNumber}</p>
           </div>`)
       })
-    } else {
+    } if (user === 'customer' && type === 'loyalty points') {
       return $('#customer-loyalty').html(`
           <div>
             <h3>Loyalty Points</h3>
             <p>${customer.calculateTotalExpenses()}</p>
           </div>`)
-    }
+    } 
   }
+
 });

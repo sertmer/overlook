@@ -173,5 +173,11 @@ describe('Manager', () => {
         id: 1,
         name: 'Leatha Ullrich' });
     })
-  })  
+  })
+  
+  describe('calculatePercentRoomsAvailable', () => {
+    it('should calculate percent of available rooms', () => {
+      expect(manager.calculatePercentRoomsAvailable('date', "2019/11/06" )).to.equal(67)
+    })
+  })
 })

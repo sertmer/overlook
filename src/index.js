@@ -161,6 +161,7 @@ $(document).ready(() => {
     } else {
       displayUserData('manager', 'vacancies');
       displayUserData('manager', 'revenue');
+      displayUserData('manager', 'percent');
     }
   }
 
@@ -173,8 +174,16 @@ $(document).ready(() => {
       displayManagerVacancies();
     } if (user === 'manager' && type === 'revenue') {
       displayManagerRevenue();
+    } if (user === 'manager' && type === 'percent') {
+      displayPercentRoomsOccupied();
     }
   } 
+
+  function displayPercentRoomsOccupied() {
+    console.log('hey');
+    return $('#operations-occupied').append(`
+    <p>${manager.calculatePercentRoomsAvailable('date', getCurrentDate())}%`)
+  }
 
   function displayManagerRevenue() {
     return $('#operations-revenue').append(`

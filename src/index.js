@@ -327,7 +327,7 @@ $(document).ready(() => {
   function displayNoVacancies() {
     $('#available-bookings-js').append(`
     <div>
-      <h2>We are unable to accomodate your request ☹️</h2>
+      <h2>We are unable to accomodate your request.</h2>
       <h3>Please adjust your search, and try again.</h3>
     </div>
     `)

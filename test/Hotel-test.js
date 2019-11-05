@@ -280,7 +280,7 @@ describe('Hotel', () => {
 
   describe('getFilteredRooms', () => {
     it('should filter rooms by any property', () => {
-      expect(hotel.getFilteredRooms("roomType", "residential suite")).to.deep.equal([
+      expect(hotel.getFilteredRooms(rooms, "roomType", "residential suite")).to.deep.equal([
         {
           number: 1,
           roomType: "residential suite",
@@ -291,7 +291,7 @@ describe('Hotel', () => {
         }
       ])
 
-      expect(hotel.getFilteredRooms('bidet', false)).to.deep.equal([
+      expect(hotel.getFilteredRooms(rooms, 'bidet', false)).to.deep.equal([
         {
           number: 18,
           roomType: "junior suite",
@@ -334,7 +334,7 @@ describe('Hotel', () => {
         }
       ])
 
-      expect(hotel.getFilteredRooms("bedSize", "queen")).to.deep.equal([
+      expect(hotel.getFilteredRooms(rooms, "bedSize", "queen")).to.deep.equal([
         {
           number: 4,
           roomType: "single room",

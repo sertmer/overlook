@@ -49,7 +49,7 @@ $(document).ready(() => {
       hideBookingError();
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     } if (event.target.className === 'book-room-button') {
-      prepRoomForPost(event);
+      bookRoom(event);
     }
   })
 
@@ -345,6 +345,7 @@ $(document).ready(() => {
     let room = selectRoomToBook(event);
     let idNum = parseInt(customer.id);
     let date = $("#date-picker-js").val()
+    console.log(date);
     let roomNum = parseInt(room.number);
     let roomReadyForPost = {
       "userID": idNum,
@@ -352,5 +353,22 @@ $(document).ready(() => {
       "roomNumber": roomNum
     }
     return roomReadyForPost;
+  }
+
+  function bookRoom(event) {
+    event.preventDefault();
+    let postingData = prepRoomForPost(event);
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        postingData
+      )
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   }
 });

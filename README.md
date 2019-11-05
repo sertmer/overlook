@@ -20,6 +20,5 @@ To use this application:
  - To login as a manager, username is 'manager' , and the password is 'overlook2019'
  - explore!
 
-#### User Flow for customer
 
 

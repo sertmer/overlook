@@ -34,8 +34,8 @@ class Hotel {
     }, [])
   }
 
-  getFilteredRooms(key, value) {
-    return this.rooms.filter(room => room[key] === value);
+  getFilteredRooms(openRooms, key, value) {
+    return openRooms.filter(room => room[key] === value);
   }
 }
 export default Hotel;

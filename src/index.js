@@ -46,6 +46,7 @@ $(document).ready(() => {
       event.preventDefault();
       displayBookingError();
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
+      hideBookingError();
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     }
   })
@@ -188,6 +189,10 @@ $(document).ready(() => {
     $("#date-picker-js").val('Select Date...');
     $('#booking-error').html(`
     <p class="error">Please Select a Date</p>`);
+  }
+
+  function hideBookingError() {
+    $('.error').hide();
   }
 
   function findCustomerByID() {

@@ -5,7 +5,6 @@ import Customer from './Customer';
 import flatpickr from "flatpickr";
 
 let customer;
-let customer2
 let manager;
 
 let users = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -48,11 +47,14 @@ $(document).ready(() => {
       displayBookingError();
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
       hideBookingError();
+      debugger;
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     } if (event.target.className === 'book-room-button') {
       bookRoom(event);
     } if (event.target.id === "customer-submit-js") {
       evaluateCustomerSearch();
+    } if (event.target.id === "view-customer-bookings-js") {
+      displayManagerBookingDashboard();
     }
   })
 
@@ -191,6 +193,8 @@ $(document).ready(() => {
               </form>
             </section>
             <section id="customer-info-js" class="rooms-available customer-info">
+            </section>
+            <section id="manager-booking-dash">
             </section>
           </article>
         </main>
@@ -391,9 +395,8 @@ $(document).ready(() => {
     if ($('#customer-search-js').val() === '') {
       displayCustomerSearchError();
     } else {
-     customer2 = manager.instantiateCustomer($('#customer-search-js').val());
-     console.log(customer2)
-     displayCustomerInfo(customer2);
+     customer = manager.instantiateCustomer($('#customer-search-js').val());
+     displayCustomerInfo(customer);
     }
   }
 
@@ -409,7 +412,34 @@ $(document).ready(() => {
       <p>${currentCustomer.name}</p>
       <h4>Loyalty:</h4>
       <p>${currentCustomer.calculateTotalExpenses()}</p>
-      <button>View Bookings</button>
+      <button id="view-customer-bookings-js" class="view-customer-bookings">Make a new Booking</button>
     </div>`)
+  }
+
+  function displayManagerBookingDashboard() {
+    $('#manager-booking-dash').append(`
+    <article class="customer-bookings" id="customer-bookings-js">
+      <h2 class="booking-title">Book Their Next Stay</h2>
+        <section class="booking-filters">
+          <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..." value=""> 
+          <div id="booking-error">
+          </div>
+          <form class="roomtype-dropdown">
+          <select name="room-type" id="roomtype-dropdown-js">
+          <option value="residential suite">Residential Suite</option>
+          <option value="suite">Suite</option>
+          <option value="single room">Single Room</option>
+          <option value="junior suite">Junior Suite</option>
+          </select>
+          <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
+          </form>
+        </section>
+        <section class="rooms-available">
+          <h2>Available Rooms<h2>
+          <div class="available-bookings" id="available-bookings-js">
+          </div>
+        </section>
+    </article>`)
+    addDatePicker();
   }
 });

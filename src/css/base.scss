@@ -201,5 +201,42 @@ body {
   font-family: $main-font;
   text-align: center;
   color: $primary-accent;
+}
+
+.rooms-available {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: $main-font;
+  color: $primary-accent;
+  width: 97%;
+  margin: 1%;
+}
+
+.available-bookings {
+  @include rounded-corners(5px);
+  background-color: $primary-background;
+  margin: 1%;
+  width: 100%;
+  display: flex;
+  flex-flow: row-reverse wrap;
+  overflow: auto;
+}
+
+.room-to-book {
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-accent;
+  margin: 1%;
+  padding: 2px;
+  width: 15%;
+} p {
+    font-size: smaller;
+}
+
+.error {
+  font-family: $main-font;
+  color: $call-to-action;
   font-size: larger;
 }

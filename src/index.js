@@ -42,6 +42,8 @@ $(document).ready(() => {
       logout();
     } if (event.target.id === 'roomtype-dropdown') {
       toggleRoomFilterMenu();
+    } if (event.target.id === 'booking-submit-js') {
+      displayCustomerBookingOptions();
     }
   })
 
@@ -123,17 +125,18 @@ $(document).ready(() => {
           <h2 class="booking-title">Book Your Next Stay</h2>
             <section class="booking-filters">
               <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..."> 
-              <form class="roomtype-dropdown" id="roomtype-dropdown-js" hidden>
-              <select name="room-type">
+              <form class="roomtype-dropdown" id="roomtype-dropdown-js">
+              <select name="room-type" id="roomtype-dropdown-js">
               <option value="residential suite">Residential Suite</option>
               <option value="suite">Suite</option>
               <option value="single room">Single Room</option>
               <option value="junior suite">Junior Suite</option>
               </select>
-              <input type="submit" value="Submit">
+              <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
               </form>
             </section>
-            <section class="available-bookings">
+            <section class="available-bookings" id="available-bookings-js">
+              <h2>Available Rooms<h2>
             </section>
           </article>
         </main>`);
@@ -271,4 +274,14 @@ $(document).ready(() => {
     });
   } 
 
+  function displayCustomerBookingOptions() {
+    event.preventDefault();
+    let chosenDate = $("#date-picker-js").val();
+    // let roomType = $('#roomtype-dropdown-js option:selected').val();
+    let openRooms = customer.getAvailableRooms('date', chosenDate);
+    openRooms.forEach(room => {
+      $('#available-bookings-js').append(`
+      <p>Room Number ${room.number}</p>`)
+    })
+  }
 });

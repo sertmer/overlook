@@ -9,8 +9,8 @@ class Manager extends Hotel {
 
   instantiateCustomer(name) {
     const foundCustomer = this.users.find(user => user.name === name);
-    let customer = new Customer(foundCustomer, this.bookings, []);
-    return customer;
+    let newCustomer = new Customer(foundCustomer, this.bookings, []);
+    return newCustomer;
   }
 
   calculatePercentRoomsAvailable(key, value) {
@@ -20,4 +20,4 @@ class Manager extends Hotel {
   }
 }
 
-export default Manager;
+export default Manager; 

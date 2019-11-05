@@ -335,10 +335,9 @@ $(document).ready(() => {
 
   function selectRoomToBook(event) {
     let targetID = parseInt(event.target.id);
-    return customer.rooms.find(room => {
-      return targetID === room.number;
+    let match = customer.rooms.find(room => {
+     return targetID === room.number;
     })
+    return match;
   }
 });
-
-// if target has id of available-bookings-js then get closest div id and loop through rooms to find the room  number that matches div id. that's the room to book

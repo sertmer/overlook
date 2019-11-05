@@ -120,7 +120,7 @@ $(document).ready(() => {
             </section>
           </article>
           <article class="customer-bookings" id="customer-bookings-js">
-          <h3 class="booking-title">Book Your Next Stay</h3>
+          <h2 class="booking-title">Book Your Next Stay</h2>
             <section class="booking-filters">
               <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..."> 
               <form class="roomtype-dropdown" id="roomtype-dropdown-js" hidden>

@@ -1,9 +1,6 @@
 # Welcome to the Overlook Hotel - A Solo Project for Module 2 at the Turing School of Software and Design
 ## A Hotel Management Application by Scott Ertmer
 
-#### View Project Here
-* https://sertmer.github.io/fit-lit/src/index.html
-
 
 #### A Mod 2 Solo project intended to develop skills around:
 * Use OOP to drive the design of the application and the code

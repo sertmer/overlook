@@ -29,7 +29,7 @@ Promise.all([users, rooms, bookings])
     bookings = element[2];
   })
   .then(() => {
-    console.log("foo")
+    console.log("Fetch Complete")
   })
 
 $(document).ready(() => {
@@ -179,6 +179,22 @@ $(document).ready(() => {
               <h3>Total Revenue</h3>
             </section>
         </article>
+        <article class="customer-bookings" id="customer-bookings-js">
+          <h2 class="booking-title">Search For A customer</h2>
+            <section class="booking-filters">
+              <input id="customer-search-js" class="date-picker" type="text" placeholder="Customer Name" value=""> 
+              <div id="customer-error">
+              </div>
+              <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
+              </form>
+            </section>
+            <section class="rooms-available">
+              <h2>Available Rooms<h2>
+              <div class="available-bookings" id="available-bookings-js">
+              </div>
+            </section>
+          </article>
+        </main>
       </main>`)
   }
 
@@ -203,12 +219,6 @@ $(document).ready(() => {
     let newCustomer = users.find(user => user.id === customerId);
     return newCustomer;
   }
-
-
-//if ($user.includes('customer') && $password === 'overlook2019') {
-  // let $userID = Number($user.split('r')[1]);
-  // customerHandler($userID);
-
 
   function instantiateUser(userType) {
     if (userType === 'customer') {

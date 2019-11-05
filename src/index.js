@@ -141,7 +141,7 @@ $(document).ready(() => {
               <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
               </form>
             </section>
-            <section>
+            <section class="rooms-available">
               <h2>Available Rooms<h2>
               <div class="available-bookings" id="available-bookings-js">
               </div>
@@ -187,7 +187,7 @@ $(document).ready(() => {
   function displayBookingError() {
     $("#date-picker-js").val('Select Date...');
     $('#booking-error').html(`
-    <p>Please Select a Date</p>`);
+    <p class="error">Please Select a Date</p>`);
   }
 
   function findCustomerByID() {

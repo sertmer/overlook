@@ -59,7 +59,8 @@ $(document).ready(() => {
       instantiateUser('manager');
       displayDashboard('manager');
       populateDashboard('manager')
-    } if ($('#password-input').val() === 'overlook2019') {
+    } if ($('#username-input').val().includes('customer') && $('#password-input').val() === 'overlook2019') {
+      debugger;
       instantiateUser('customer');
       displayDashboard('customer');
       populateDashboard('customer');
@@ -198,10 +199,16 @@ $(document).ready(() => {
   }
 
   function findCustomerByID() {
-    let customerId = parseInt($('#username-input').val().slice(-2));
+    let customerId = parseInt($('#username-input').val().split('r')[1]);
     let newCustomer = users.find(user => user.id === customerId);
     return newCustomer;
   }
+
+
+//if ($user.includes('customer') && $password === 'overlook2019') {
+  // let $userID = Number($user.split('r')[1]);
+  // customerHandler($userID);
+
 
   function instantiateUser(userType) {
     if (userType === 'customer') {

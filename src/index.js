@@ -46,7 +46,6 @@ $(document).ready(() => {
       event.preventDefault();
       displayBookingError();
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
-      console.log(typeof $('#roomtype-dropdown-js option:selected').val());
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     }
   })
@@ -142,8 +141,10 @@ $(document).ready(() => {
               <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
               </form>
             </section>
-            <section class="available-bookings" id="available-bookings-js">
+            <section>
               <h2>Available Rooms<h2>
+              <div class="available-bookings" id="available-bookings-js">
+              </div>
             </section>
           </article>
         </main>`);
@@ -297,16 +298,30 @@ $(document).ready(() => {
   function displayFilteredRooms(key, value) {
     let availableRooms = getCustomerBookingOptions()
     let openFilteredRooms = customer.getFilteredRooms(availableRooms, key, value)
-    openFilteredRooms.forEach(room => {
-      $('#available-bookings-js').append(`
-      <div>
-      <h4>Room Number:</h4>
-      <p>${room.number}</p>
-      <h4>Room Type:</h4>
-      <p>${room.roomType}</p>
-      <h4>Cost per Night</h4>
-      <p>${room.costPerNight}</p>
-      </div>`)
-    })
+    $('#available-bookings-js').empty()
+    if (openFilteredRooms.length === 0) {
+      displayNoVacancies()
+    } else {
+      openFilteredRooms.forEach(room => {
+        $('#available-bookings-js').append(`
+        <div class="room-to-book" id="${room.number}">
+          <h4>Room Number:</h4>
+          <p>${room.number}</p>
+          <h4>Room Type:</h4>
+          <p>${room.roomType}</p>
+          <h4>Cost per Night</h4>
+          <p>${room.costPerNight}</p>
+        </div>`)
+      })
+    }
+  }
+
+  function displayNoVacancies() {
+    $('#available-bookings-js').append(`
+    <div>
+      <h2>We are unable to accomodate your request ☹️</h2>
+      <h3>Please adjust your search, and try again.</h3>
+    </div>
+    `)
   }
 });

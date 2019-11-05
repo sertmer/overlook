@@ -48,6 +48,8 @@ $(document).ready(() => {
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
       hideBookingError();
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
+    } if (event.target.className === 'book-room-button') {
+      bookRoom(event);
     }
   })
 
@@ -309,13 +311,14 @@ $(document).ready(() => {
     } else {
       openFilteredRooms.forEach(room => {
         $('#available-bookings-js').append(`
-        <div class="room-to-book" id="${room.number}">
+        <div class="room-to-book">
           <h4>Room Number:</h4>
           <p>${room.number}</p>
           <h4>Room Type:</h4>
           <p>${room.roomType}</p>
           <h4>Cost per Night</h4>
           <p>${room.costPerNight}</p>
+          <button class="book-room-button" id="${room.number}">Book This Room</button>
         </div>`)
       })
     }
@@ -324,9 +327,48 @@ $(document).ready(() => {
   function displayNoVacancies() {
     $('#available-bookings-js').append(`
     <div>
-      <h2>We are unable to accomodate your request ☹️</h2>
+      <h2>We are unable to accomodate your request.</h2>
       <h3>Please adjust your search, and try again.</h3>
     </div>
     `)
+  }
+
+  function selectRoomToBook(event) {
+    let targetID = parseInt(event.target.id);
+    let match = customer.rooms.find(room => {
+     return targetID === room.number;
+    })
+    return match;
+  }
+
+  function prepRoomForPost(event) {
+    let room = selectRoomToBook(event);
+    let idNum = parseInt(customer.id);
+    let date = $("#date-picker-js").val()
+    console.log(date);
+    let roomNum = parseInt(room.number);
+    let roomReadyForPost = {
+      "userID": idNum,
+      "date": date,
+      "roomNumber": roomNum
+    }
+    return roomReadyForPost;
+  }
+
+  function bookRoom(event) {
+    event.preventDefault();
+    let postingData = prepRoomForPost(event);
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        postingData
+      )
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   }
 });

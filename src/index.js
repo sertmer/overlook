@@ -5,6 +5,7 @@ import Customer from './Customer';
 import flatpickr from "flatpickr";
 
 let customer;
+let customer2
 let manager;
 
 let users = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -180,7 +181,7 @@ $(document).ready(() => {
               <h3>Total Revenue</h3>
             </section>
         </article>
-        <article class="customer-bookings" id="customer-bookings-js">
+        <article class="customer-bookings">
           <h2 class="booking-title">Search For A customer</h2>
             <section class="booking-filters">
               <input id="customer-search-js" class="date-picker" type="text" placeholder="Customer Name" value=""> 
@@ -189,10 +190,7 @@ $(document).ready(() => {
               <input class="booking-submit" id="customer-submit-js" type="submit" value="Submit">
               </form>
             </section>
-            <section class="rooms-available">
-              <h2>Available Rooms<h2>
-              <div class="available-bookings" id="available-bookings-js">
-              </div>
+            <section id="customer-info-js" class="rooms-available customer-info">
             </section>
           </article>
         </main>
@@ -363,7 +361,6 @@ $(document).ready(() => {
     let room = selectRoomToBook(event);
     let idNum = parseInt(customer.id);
     let date = $("#date-picker-js").val()
-    console.log(date);
     let roomNum = parseInt(room.number);
     let roomReadyForPost = {
       "userID": idNum,
@@ -393,11 +390,26 @@ $(document).ready(() => {
   function evaluateCustomerSearch() {
     if ($('#customer-search-js').val() === '') {
       displayCustomerSearchError();
+    } else {
+     customer2 = manager.instantiateCustomer($('#customer-search-js').val());
+     console.log(customer2)
+     displayCustomerInfo(customer2);
     }
   }
 
   function displayCustomerSearchError() {
     $('#customer-error').append(`
     <p class="error">Invalid Search. Please Try Again</p>`)
+  }
+
+  function displayCustomerInfo(currentCustomer) {
+    $('#customer-info-js').append(`
+    <div class="customer-card">
+      <h4>Name:</h4>
+      <p>${currentCustomer.name}</p>
+      <h4>Loyalty:</h4>
+      <p>${currentCustomer.calculateTotalExpenses()}</p>
+      <button>View Bookings</button>
+    </div>`)
   }
 });

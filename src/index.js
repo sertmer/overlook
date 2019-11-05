@@ -42,7 +42,10 @@ $(document).ready(() => {
       logout();
     } if (event.target.id === 'roomtype-dropdown') {
       toggleRoomFilterMenu();
-    } if (event.target.id === 'booking-submit-js') {
+    } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val() === '') {
+      event.preventDefault();
+      displayBookingError();
+    } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
       displayCustomerBookingOptions();
     }
   })
@@ -124,7 +127,9 @@ $(document).ready(() => {
           <article class="customer-bookings" id="customer-bookings-js">
           <h2 class="booking-title">Book Your Next Stay</h2>
             <section class="booking-filters">
-              <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..."> 
+              <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..." value=""> 
+              <div id="booking-error">
+              </div>
               <form class="roomtype-dropdown" id="roomtype-dropdown-js">
               <select name="room-type" id="roomtype-dropdown-js">
               <option value="residential suite">Residential Suite</option>
@@ -176,9 +181,15 @@ $(document).ready(() => {
     $('#login-error-js').toggle();
   };
 
+  function displayBookingError() {
+    $("#date-picker-js").val('Select Date...');
+    $('#booking-error').html(`
+    <p>Please Select a Date</p>`);
+  }
+
   function findCustomerByID() {
     let customerId = parseInt($('#username-input').val().slice(-2));
-    let newCustomer = users.find(user => user.id === customerId)
+    let newCustomer = users.find(user => user.id === customerId);
     return newCustomer;
   }
 

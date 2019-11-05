@@ -159,16 +159,41 @@ describe('Manager', () => {
     it('should be able to instantiate a new customer', () => {
       expect(manager.instantiateCustomer('Leatha Ullrich')).to.deep.equal({
         bookings:
-         [ { id: 1572293130156,
-             userID: 1,
-             date: '2019/11/06',
-             roomNumber: 18,
-             roomServiceCharges: [] },
-           { id: 1572293130159,
-             userID: 1,
-             date: '2019/11/12',
-             roomNumber: 8,
-             roomServiceCharges: [] } ],
+         [{
+          id: 1572293130156,
+          userID: 1,
+          date: "2019/11/06",
+          roomNumber: 18,
+          roomServiceCharges: []
+        },
+        {
+          id: 1572293130159,
+          userID: 1,
+          date: "2019/11/12",
+          roomNumber: 8,
+          roomServiceCharges: []
+        },
+        {
+          id: 1572293130159,
+          userID: 12,
+          date: "2019/10/29",
+          roomNumber: 10,
+          roomServiceCharges: []
+        },
+        {
+          id: 1572293130159,
+          userID: 27,
+          date: "2019/11/15",
+          roomNumber: 4,
+          roomServiceCharges: []
+        },
+        {
+          id: 1572293130160,
+          userID: 16,
+          date: "2019/11/06",
+          roomNumber: 7,
+          roomServiceCharges: []
+        }],
         rooms: [],
         id: 1,
         name: 'Leatha Ullrich' });

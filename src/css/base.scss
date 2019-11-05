@@ -214,6 +214,7 @@ body {
   margin: 1%;
 }
 
+.customer-info,
 .available-bookings {
   @include rounded-corners(5px);
   background-color: $primary-background;

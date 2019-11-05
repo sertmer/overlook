@@ -73,6 +73,10 @@ form {
 input {
   width: 90%;
   height: 40px;
+  padding: 5px;
+  margin: 1%;
+  font-family: $fancy-font;
+  font-size: larger;
 }
 
 .login-submit-button {
@@ -182,6 +186,7 @@ body {
   padding: 1%;
   background-color: $primary-background;
   margin: 1%;
+  font-family: $fancy-font;
 }
 
 .roomtype-dropdown {
@@ -194,4 +199,7 @@ body {
   display: inline-block;
   margin: 1%;
   font-family: $main-font;
+  text-align: center;
+  color: $primary-accent;
+  font-size: larger;
 }

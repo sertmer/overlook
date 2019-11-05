@@ -344,11 +344,8 @@ $(document).ready(() => {
   function prepRoomForPost(event) {
     let room = selectRoomToBook(event);
     let idNum = parseInt(customer.id);
-    console.log("userID", idNum);
     let date = $("#date-picker-js").val()
-    console.log('date', date);
     let roomNum = parseInt(room.number);
-    console.log('roomnumber', roomNum);
     let roomReadyForPost = {
       "userID": idNum,
       "date": date,

@@ -49,7 +49,7 @@ $(document).ready(() => {
       hideBookingError();
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     } if (event.target.className === 'book-room-button') {
-      selectRoomToBook(event);
+      prepRoomForPost(event);
     }
   })
 
@@ -339,5 +339,21 @@ $(document).ready(() => {
      return targetID === room.number;
     })
     return match;
+  }
+
+  function prepRoomForPost(event) {
+    let room = selectRoomToBook(event);
+    let idNum = parseInt(customer.id);
+    console.log("userID", idNum);
+    let date = $("#date-picker-js").val()
+    console.log('date', date);
+    let roomNum = parseInt(room.number);
+    console.log('roomnumber', roomNum);
+    let roomReadyForPost = {
+      "userID": idNum,
+      "date": date,
+      "roomNumber": roomNum
+    }
+    return roomReadyForPost;
   }
 });

@@ -288,11 +288,22 @@ $(document).ready(() => {
   function displayCustomerBookingOptions() {
     event.preventDefault();
     let chosenDate = $("#date-picker-js").val();
-    // let roomType = $('#roomtype-dropdown-js option:selected').val();
     let openRooms = customer.getAvailableRooms('date', chosenDate);
+    console.log(openRooms)
     openRooms.forEach(room => {
       $('#available-bookings-js').append(`
-      <p>Room Number ${room.number}</p>`)
+      <div>
+      <h4>Room Number:</h4>
+      <p>${room.number}</p>
+      <h4>Room Type:</h4>
+      <p>${room.roomType}</p>
+      <h4>Cost per Night</h4>
+      <p>${room.costPerNight}</p>
+      </div>`)
     })
+  }
+
+  function displayFilteredRooms() {
+
   }
 });

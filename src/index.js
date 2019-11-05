@@ -48,6 +48,8 @@ $(document).ready(() => {
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
       hideBookingError();
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
+    } if (event.target.className === 'book-room-button') {
+      selectRoomToBook(event);
     }
   })
 
@@ -309,13 +311,14 @@ $(document).ready(() => {
     } else {
       openFilteredRooms.forEach(room => {
         $('#available-bookings-js').append(`
-        <div class="room-to-book" id="${room.number}">
+        <div class="room-to-book">
           <h4>Room Number:</h4>
           <p>${room.number}</p>
           <h4>Room Type:</h4>
           <p>${room.roomType}</p>
           <h4>Cost per Night</h4>
           <p>${room.costPerNight}</p>
+          <button class="book-room-button" id="${room.number}">Book This Room</button>
         </div>`)
       })
     }
@@ -329,4 +332,13 @@ $(document).ready(() => {
     </div>
     `)
   }
+
+  function selectRoomToBook(event) {
+    let targetID = parseInt(event.target.id);
+    return customer.rooms.find(room => {
+      return targetID === room.number;
+    })
+  }
 });
+
+// if target has id of available-bookings-js then get closest div id and loop through rooms to find the room  number that matches div id. that's the room to book

@@ -47,7 +47,6 @@ $(document).ready(() => {
       displayBookingError();
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
       hideBookingError();
-      debugger;
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     } if (event.target.className === 'book-room-button') {
       bookRoom(event);

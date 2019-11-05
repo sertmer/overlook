@@ -46,9 +46,11 @@ $(document).ready(() => {
       event.preventDefault();
       displayBookingError();
     } if (event.target.id === 'booking-submit-js' && $('#date-picker-js').val().includes('/')) {
-      displayCustomerBookingOptions();
+      console.log(typeof $('#roomtype-dropdown-js option:selected').val());
+      displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     }
   })
+
 
   function evaluateLogin() {
     if ($('#username-input').val() === 'manager' && $('#password-input').val() === 'overlook2019') {
@@ -130,7 +132,7 @@ $(document).ready(() => {
               <input id="date-picker-js" class="date-picker" type="text" placeholder="Select Date..." value=""> 
               <div id="booking-error">
               </div>
-              <form class="roomtype-dropdown" id="roomtype-dropdown-js">
+              <form class="roomtype-dropdown">
               <select name="room-type" id="roomtype-dropdown-js">
               <option value="residential suite">Residential Suite</option>
               <option value="suite">Suite</option>
@@ -285,25 +287,28 @@ $(document).ready(() => {
     });
   } 
 
-  function displayCustomerBookingOptions() {
+  function getCustomerBookingOptions() {
     event.preventDefault();
     let chosenDate = $("#date-picker-js").val();
     let openRooms = customer.getAvailableRooms('date', chosenDate);
-    console.log(openRooms)
-    openRooms.forEach(room => {
-      $('#available-bookings-js').append(`
-      <div>
-      <h4>Room Number:</h4>
-      <p>${room.number}</p>
-      <h4>Room Type:</h4>
-      <p>${room.roomType}</p>
-      <h4>Cost per Night</h4>
-      <p>${room.costPerNight}</p>
-      </div>`)
-    })
+    return openRooms;
   }
 
-  function displayFilteredRooms() {
-
+  function displayFilteredRooms(key, value) {
+    let availableRooms = getCustomerBookingOptions()
+    let openFilteredRooms = customer.getFilteredRooms(availableRooms, key, value)
+    console.log(openFilteredRooms);
   }
 });
+
+// openRooms.forEach(room => {
+//   $('#available-bookings-js').append(`
+//   <div>
+//   <h4>Room Number:</h4>
+//   <p>${room.number}</p>
+//   <h4>Room Type:</h4>
+//   <p>${room.roomType}</p>
+//   <h4>Cost per Night</h4>
+//   <p>${room.costPerNight}</p>
+//   </div>`)
+// })

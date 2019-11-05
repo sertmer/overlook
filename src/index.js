@@ -297,18 +297,16 @@ $(document).ready(() => {
   function displayFilteredRooms(key, value) {
     let availableRooms = getCustomerBookingOptions()
     let openFilteredRooms = customer.getFilteredRooms(availableRooms, key, value)
-    console.log(openFilteredRooms);
+    openFilteredRooms.forEach(room => {
+      $('#available-bookings-js').append(`
+      <div>
+      <h4>Room Number:</h4>
+      <p>${room.number}</p>
+      <h4>Room Type:</h4>
+      <p>${room.roomType}</p>
+      <h4>Cost per Night</h4>
+      <p>${room.costPerNight}</p>
+      </div>`)
+    })
   }
 });
-
-// openRooms.forEach(room => {
-//   $('#available-bookings-js').append(`
-//   <div>
-//   <h4>Room Number:</h4>
-//   <p>${room.number}</p>
-//   <h4>Room Type:</h4>
-//   <p>${room.roomType}</p>
-//   <h4>Cost per Night</h4>
-//   <p>${room.costPerNight}</p>
-//   </div>`)
-// })

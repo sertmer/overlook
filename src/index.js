@@ -50,6 +50,8 @@ $(document).ready(() => {
       displayFilteredRooms('roomType', $('#roomtype-dropdown-js option:selected').val());
     } if (event.target.className === 'book-room-button') {
       bookRoom(event);
+    } if (event.target.id === "customer-submit-js") {
+      evaluateCustomerSearch();
     }
   })
 
@@ -60,7 +62,6 @@ $(document).ready(() => {
       displayDashboard('manager');
       populateDashboard('manager')
     } if ($('#username-input').val().includes('customer') && $('#password-input').val() === 'overlook2019') {
-      debugger;
       instantiateUser('customer');
       displayDashboard('customer');
       populateDashboard('customer');
@@ -185,7 +186,7 @@ $(document).ready(() => {
               <input id="customer-search-js" class="date-picker" type="text" placeholder="Customer Name" value=""> 
               <div id="customer-error">
               </div>
-              <input class="booking-submit" id="booking-submit-js" type="submit" value="Submit">
+              <input class="booking-submit" id="customer-submit-js" type="submit" value="Submit">
               </form>
             </section>
             <section class="rooms-available">
@@ -387,5 +388,16 @@ $(document).ready(() => {
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(err => console.log(err));
+  }
+
+  function evaluateCustomerSearch() {
+    if ($('#customer-search-js').val() === '') {
+      displayCustomerSearchError();
+    }
+  }
+
+  function displayCustomerSearchError() {
+    $('#customer-error').append(`
+    <p class="error">Invalid Search. Please Try Again</p>`)
   }
 });
